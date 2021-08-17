@@ -1,65 +1,16 @@
-import React, { Component } from "react";
-import ReactDom from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import "./assets/style.css";
-import  quiz from "./quiz";
-import QuestionBox from "./components/QuestionBox"
-import Result from "./components/Result";
+import App from "./App";
+import Quiz from "./quiz"
 
-class Quiz extends Component {
-    state = {
-        questionBank: [],
-        score: 0,
-        responses: 0
-    };
-
-    getQuestions = () => {
-        quiz().then(question => {
-            this.setState({
-                questionBank: question
-            });
-
-        });
-    };
-    computeAnswer =
-    (answer, correctAnswer) => {
-        if (answer === correctAnswer) {
-      this.setState({
-     score: this.state.score + 1
-});
- };
-      this.setState({
-            responses: this.state.responses < 5 ? this.state.responses + 1 : 5
-        });
-    };
-
-    playAgain = () => {
-        this.getQuestions();
-        this.setState({
-            score: 0,
-            responses: 0
-        });
-    };
-
-    componentDidMount(){
-        this.getQuestions();
-    };
-    
-    render() {
-        return (
-        <div className="container">
-        <div className="title">IT IS THE OFFICE QUIZ.</div>
-        <div className="intro"> WHO SAID IT?</div>
-        {this.state.questionBank.length > 0 && 
-        this.state.responses < 5 &&
-        this.state.questionBank.map(
-            ({question, answers, correct, questionId}) => (
-        <QuestionBox question={question} options={answers} key={questionId} 
-        selected={answer => this.computeAnswer(answer,correct)}
-        /> ) 
-        )}
-        {this.state.responses === 5 ? (<Result score={this.state.score} playAgain={this.playAgain}/>) : null}
-        </div> 
-    )
-}
-}
-ReactDom.render(<Quiz />, document.getElementById("root"));
+const store = createStore(Quiz, applyMiddleware(thunk));
+ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+  document.getElementById('root')
+);

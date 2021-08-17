@@ -1,8 +1,12 @@
-import React, {useState} from "react";
+import { render } from "@testing-library/react";
+import React, {Component} from "react";
 
+class Question extends Component {
 
-const QuestionBox = ({question, options, selected}) => {
-  const [answer, setAnswer] = useState(options);
+ questionBox = ({question, options, selected}) => {
+  const [answer, setAnswer] = (options)
+
+  render() 
   return (
     <div className="questionBox">
       <div className="question">"{question}"</div>
@@ -20,6 +24,6 @@ const QuestionBox = ({question, options, selected}) => {
       ))}
     </div>
   );
-};
-
-export default QuestionBox;
+}
+} 
+export default Question;

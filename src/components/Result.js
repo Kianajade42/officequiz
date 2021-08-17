@@ -1,7 +1,11 @@
+
 import React from "react";
 
-const Result = ({score, playAgain}) => (
-    <div className="score-board">
+const Result = ({score, playAgain}) => {
+    
+
+    return(
+        <div className="score-board">
         <div className="score">You answered {score} / 5 correct.</div>
         <div className="gif">
         <iframe src="https://giphy.com/embed/8VrtCswiLDNnO" width="580" height="450" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/the-office-nbc-8VrtCswiLDNnO"></a></p>
@@ -12,6 +16,7 @@ const Result = ({score, playAgain}) => (
              Play again?
         </button>
     </div>
-)
+    )
+    }
 
 export default Result;
