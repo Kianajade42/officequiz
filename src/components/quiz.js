@@ -1,23 +1,29 @@
 import React from "react";
+import Question from "./QuestionBox"
+import Result from "./Result"
 
-class Quiz {
+// import { connect } from 'react-redux'
+// import {fetchQuestion} from '../store/actions/action'
+
+
+class Quiz extends React.Component {
      state = {
-        questionBank: [],
+       questionBank: [],
         score: 0,
-        responses: 0
-    }
-
-    getQuestions = () => {
-        quiz().then(question => {
+         responses: 0
+     }
+          
+     getQuestions = () => {
             this.setState({
-                questionBank: question
+                questionBank: Question
             });
 
-        });
-    };
-     componentDidMount(){
-        this.getQuestions();
-    };
+         };
+     
+
+      componentDidMount(){
+         this.getQuestions();
+     };
 
     computeAnswer =
     (answer, correctAnswer) => {
@@ -45,17 +51,25 @@ class Quiz {
         <div className="container">
         <div className="title">IT IS THE OFFICE QUIZ.</div>
         <div className="intro"> WHO SAID IT?</div>
+    
         {this.state.questionBank.length > 0 && 
          this.state.responses < 5 &&
-         this.state.questionBank.map(
+         this.state.questionBank.forEach(
            ({question, answers, correct, questionId}) => (
-        <Question question={question} options={answers} key={questionId} 
+        <questionBox question={question} options={answers.split(',')} key={questionId} 
         selected={answer => this.computeAnswer(answer,correct)}/>) 
         )}
         {this.state.responses === 5 ? (<Result score={this.state.score} playAgain={this.playAgain}/>) : null}
         </div>
         
+        
+       
+        
 );    
 }
   }  
-  export default Quiz;
+ 
+
+
+export default Quiz;
+//connect(mapStateToProps, mapDispatchToProps)(Quiz)

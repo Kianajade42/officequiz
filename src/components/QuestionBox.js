@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
-import React, {Component} from "react";
+import React from "react";
 
-class Question extends Component {
+class Question extends React.Component {
 
  questionBox = ({question, options, selected}) => {
   const [answer, setAnswer] = (options)

@@ -1,16 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+import quizReducer from './store/reducers/reducer'
 import "./assets/style.css";
 import App from "./App";
-import Quiz from "./quiz"
 
-const store = createStore(Quiz, applyMiddleware(thunk));
+
+const store = createStore(quizReducer, applyMiddleware(thunk))
+
 ReactDOM.render(
+  <React.StrictMode>
     <Provider store={store}>
-      <App />
-    </Provider>,
-  document.getElementById('root')
-);
+        <App />
+    </Provider>
+    </React.StrictMode>,
+document.getElementById('root')
+)
