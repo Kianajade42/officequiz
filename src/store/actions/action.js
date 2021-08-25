@@ -1,27 +1,28 @@
 const url = "http://localhost:3000/questions"
+export const fetchRequest = "FETCH_REQUEST"
+export const fetchSuccess = "FETCH_SUCCESS"
+export const fetchError = "FETCH_ERROR"
 
 function fetchQuestionsRequest(){
   return {
-    type: "FETCH_REQUEST"
+    type: fetchRequest
+  }
+}
+function fetchQuestionsError() {
+  return {
+    type: fetchError
+  }
+
+}
+
+function fetchQuestionsSuccess(payload) {
+  return {
+    type: fetchSuccess, 
+    payload
   }
 }
 
-
-// function fetchQuestionsSuccess(payload) {
-//   return {
-//     type: "FETCH_SUCCESS",
-//     payload
-//   }
-// }
-
-// function fetchQuestionsError() {
-//   return {
-//     type: "FETCH_ERROR"
-//   }
-//}
-
-//export const getQuestion = (question) => ({type: "GOT_QUIZ", payload: question})
-function fetchQuestions(){
+export function fetchQuestions(){
     return fetch(url, {method: 'GET'})
 }
 
@@ -29,22 +30,11 @@ export const fetchQuestionsWithRedux = () => {
     return (dispatch) => {
         dispatch(fetchQuestionsRequest())
      return fetchQuestions()
-     //.then(response => response.json)
-     .then(response => response.json())
+     .then((response) => response.json())
+     .then((response) => {
+         dispatch(fetchQuestionsSuccess(response))
+     })
     }
 }
 
-export const createQuestion = (question) => {
-    return () => {
-        const configObj = {
-            method: 'POST',
-            question: JSON.stringify(question)
-        }
-
-        fetch(url, configObj)
-        .then(resp => resp.json())
-        .then(json => {
-            console.log(json)
-        })
-    }
-}
+ 

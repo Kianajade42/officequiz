@@ -1,12 +1,14 @@
 import { render } from "@testing-library/react";
 import React from "react";
 
+
 class Question extends React.Component {
+ questionBox = ({
+  question, options, selected}) => {
+   const [answer, setAnswer] = (options)
 
- questionBox = ({question, options, selected}) => {
-  const [answer, setAnswer] = (options)
-
-  render() 
+  render()
+  
   return (
     <div className="questionBox">
       <div className="question">"{question}"</div>
@@ -23,7 +25,8 @@ class Question extends React.Component {
         </button>
       ))}
     </div>
-  );
+  )};
 }
-} 
-export default Question;
+
+
+export default Question

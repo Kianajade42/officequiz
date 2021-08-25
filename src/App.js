@@ -7,18 +7,18 @@ import Result from "./components/Result";
 import {fetchQuestionsWithRedux} from "./store/actions/action"
 import {connect} from "react-redux";
 import { useEffect } from "react";
-
-
+//import Question from "./components/QuestionBox";
+//import {fetchQuestions} from './store/actions/action';
 
 
 function App({fetchQuestions}) {
-   
+
   useEffect(() => {
     fetchQuestions()
      },[fetchQuestions]);
 
   return (
-     
+    
   <div className="App">
      <Router>
       <Switch >
@@ -37,15 +37,16 @@ function App({fetchQuestions}) {
   );
    
 }
- const mapStateToProps = (state) => {
-    return{
-        questionBank: state.question
-    }
-}
+//  const mapStateToProps = (state) => {
+//     return{
+//       Quiz
+//         //questionBox: state.question
+//     }
+// }
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchQuestions: () => dispatch(fetchQuestionsWithRedux())
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
