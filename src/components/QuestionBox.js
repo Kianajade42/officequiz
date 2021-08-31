@@ -3,23 +3,23 @@ import React from "react";
 
 
 class Question extends React.Component {
- questionBox = ({
-  question, options, selected}) => {
-   const [answer, setAnswer] = (options)
+//  questionBox = ({
+//   question, options, selected}) => {
+//    const [answer, setAnswer] = (options)
 
-  render()
+  render(){
   
   return (
     <div className="questionBox">
-      <div className="question">"{question}"</div>
-      {answer.map((text, index) => (
+      <div className="question">{this.props.question}</div>
+      {this.props.options.map((text, index) => (
         <button
           key={index}
           className="answerBtn"
-          onClick={() => {
-              setAnswer([text]);
-              selected(text);
-          }}
+          // onClick={() => {
+          //     setAnswer([text]);
+          //     selected(text);
+          //}}
         >
           {text}
         </button>

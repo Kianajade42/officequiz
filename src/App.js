@@ -1,23 +1,27 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import "./assets/style.css";
-import Quiz from "./components/quiz"
+import Quiz from "./components/quiz";
 import Home from "./components/home";
 import Result from "./components/Result";
-import {fetchQuestionsWithRedux} from "./store/actions/action"
-import {connect} from "react-redux";
-import { useEffect } from "react";
-//import Question from "./components/QuestionBox";
-//import {fetchQuestions} from './store/actions/action';
+import { useEffect} from "react";
+import {fetchQuestions} from './store/actions/action';
+import {useDispatch, useSelector} from "react-redux"; 
+import {getData} from "./store/selectors/selector";
+
+function App() {
 
 
-function App({fetchQuestions}) {
+const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetchQuestions()
-     },[fetchQuestions]);
+const data = useSelector(getData)
 
-  return (
+useEffect (() => {
+    dispatch(fetchQuestions())},
+ [  dispatch]);
+
+
+return (
     
   <div className="App">
      <Router>
@@ -25,9 +29,9 @@ function App({fetchQuestions}) {
         <Route exact path="/">
           <Home />
         </Route>
-         { <Route exact path="/quiz">
-           <Quiz/>
-        </Route>}
+         <Route exact path="/quiz"> 
+           <Quiz quotes={data}/> 
+        </Route>
         <Route exact path="/result">
           <Result />
         </Route>
@@ -37,16 +41,5 @@ function App({fetchQuestions}) {
   );
    
 }
-//  const mapStateToProps = (state) => {
-//     return{
-//       Quiz
-//         //questionBox: state.question
-//     }
-// }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchQuestions: () => dispatch(fetchQuestionsWithRedux())
-    }
-}
-export default connect(null, mapDispatchToProps)(App);
+export default App;
