@@ -58,12 +58,12 @@ class Quiz extends React.Component {
         <div className="container">
         <div className="title">IT IS THE OFFICE QUIZ.</div>
         <div className="intro"> WHO SAID IT?</div>
-        
+      {console.log(this.props.quotes)}
              {this.props.quotes.map((question, answers, id) => (
                 <React.Fragment>
             <div className="questionBox">
              <p  className="question" key={id}> {question.question}</p>
-             <p className="answerBtn" key={id}> {answers.answers}</p>
+             <p className="answerBtn" key={id}> {answers}</p>
              </div>
                 </React.Fragment>
              ))}
