@@ -91,11 +91,14 @@
   background-color: rgba(206, 204, 202, 0.74);
 }
 .answerBtn {
-  position: relative;
-  padding: 10px;
+  position: inherit;
+
+  top: 65px;
+
+  padding: 25px;
   background-color: rgba(177, 134, 42, 0.856);
   display: inline-block;
-  margin: 10px;
+  margin: 15px;
   outline: none;
   border: none;
   font-size: 1em;
