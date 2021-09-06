@@ -11,7 +11,7 @@ class Quiz extends React.Component {
         this.state = {
           questionBank: [this.props.quotes],
           score:  0,
-          responses: 0
+          responses: 0,
      }
     }
     //   componentDidMount() {
@@ -50,56 +50,52 @@ class Quiz extends React.Component {
         });
     };
  
- 
+
    render(){
  
 
      return ( 
         <div className="container">
         <div className="title">IT IS THE OFFICE QUIZ.</div>
+
         <div className="intro"> WHO SAID IT?</div>
-      {console.log(this.props.quotes)}
-             {this.props.quotes.map((question, answers, id) => (
+      
+             {this.props.quotes.map(display => (
                 <React.Fragment>
             <div className="questionBox">
-             <p  className="question" key={id}> {question.question}</p>
-             <p className="answerBtn" key={id}> {answers}</p>
-             </div>
+             <p  className="question" key={display.id}> "{display.question}" </p>
+                 {display.answers.split(",").map(choice => (
+             <p className="answerBtn"> {choice}</p> 
+                 )
+                 )}
+            </div> 
                 </React.Fragment>
              ))}
-        
-       
-            {/* <div className="question">
-             {this.props.quotes.map((question, id) => (
-             <p className="questionBox" key={id}> {question.question}</p>
-                 ))}     
+    
+            
+             {/* {this.props.quotes.map((question, id) => (
+               <div className="questionBox">
+             <p className="question" key={id}> {question.question}</p>
+                
              {this.props.quotes.map((answers, id) => (
-             <li className="answerBtn" key={id}> {answers.answers}</li>
-                ))} 
+             <p className="answerBtn" key={id}> {answers.answers.split(",")}</p>
+                ))}    
           </div>
-            */}
+          ))}  */}
+           
 
-
-        {/* <div className="answerBtn">
-            {this.props.quotes[0].answers.split("  ")}
-             
-        </div> */}
-
-
-      {/* <div className="question">
-           {this.props.quotes[0].question}</div>
-        <div className="answerBtn">
-            {this.props.quotes[0].answers.split(" , ")}
-        </div> */}
-
-        {/* {this.state.questionBank.length > 0 && 
+        {/* {this.state.score.length > 0 && 
          this.state.responses < 5 &&
-         this.state.questionBank.map(
-           ({question, answers, correct, id}) => (
-        <Question question={question} options={answers} key={id} 
+         this.props.quotes.map(
+           (display, correct) => (
+        <Question
+    
+        question={display.question}
+         options={display.answers.split(",")} key={display.id} 
         selected={answer => this.computeAnswer(answer,correct)}/>) 
         )}
         {this.state.responses === 5 ? (<Result score={this.state.score} playAgain={this.playAgain}/>) : null} */}
+       
          
         </div>
    

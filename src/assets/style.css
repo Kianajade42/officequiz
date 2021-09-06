@@ -65,7 +65,7 @@
   position: absolute;
   padding: 30px;
   background-color: rgba(177, 134, 42, 0.856);
-  margin: 175px;
+  margin: 130px;
   margin-left: 400px;
   border: none;
   font-size: 1.5em;
@@ -97,6 +97,8 @@
   background-color: rgba(177, 134, 42, 0.856);
   display: inline-block;
   margin: 5px;
+  margin-left: 20px;
+  margin-right: 40px;
   outline: none;
   border: none;
   font-size: 1em;
@@ -133,7 +135,7 @@
 .playBtn {
   position: absolute;
   background-color: rgba(177, 134, 42, 0.856);
-  top: 400px;
+  top: 300px;
   border: black;
   font-size: 1.5em;
   color: rgb(255, 255, 255);
