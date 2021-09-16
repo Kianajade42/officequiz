@@ -2,21 +2,20 @@ import React from "react";
 import Question from "./QuestionBox";
 import Result from "./Result";
 import {connect} from "react-redux";
-import {fetchQuestions, fetchSuccess} from "../store/actions/action";
-import useData from "../store/selectors/selector";
+import {fetchQuestions} from "../store/actions/action";
+import { Redirect } from "react-router-dom";
+//import useData from "../store/selectors/selector";
 
 class Quiz extends React.Component {
     constructor(props){
       super(props)
         this.state = {
           questionBank: [this.props.quotes],
-          score:  0,
+          score: 0,
           responses: 0,
      }
     }
-    //   componentDidMount() {
-    //     this.props.fetchQuestions()
-    //   }
+  
      componentDidUpdate(prevProps){
        if (this.props.quotes !== prevProps.quotes)
        { 
@@ -24,20 +23,21 @@ class Quiz extends React.Component {
        }
      }
 
+
     getQuestions = () => {
         this.setState({
         questionBank: Question
-         });
-       };
-
+        });
+          };
+       
     computeAnswer =
      (answer, correctAnswer) => {
         if (answer === correctAnswer) {
-      this.setState({
-    score: this.state.score + 1
-});
- };
-      this.setState({
+        this.setState({
+        score: this.state.score + 1
+        });
+           };
+        this.setState({
         responses: this.state.responses < 5 ? this.state.responses + 1 : 5
         });
     };
@@ -49,70 +49,32 @@ class Quiz extends React.Component {
             responses: 0
         });
     };
- 
+
 
    render(){
- 
-
      return ( 
         <div className="container">
         <div className="title">IT IS THE OFFICE QUIZ.</div>
-
         <div className="intro"> WHO SAID IT?</div>
-      
-             {this.props.quotes.map(display => (
-                <React.Fragment>
-            <div className="questionBox">
-             <p  className="question" key={display.id}> "{display.question}" </p>
-                 {display.answers.split(",").map(choice => (
-             <p className="answerBtn"> {choice}</p> 
-                 )
-                 )}
-            </div> 
-                </React.Fragment>
-             ))}
-    
-            
-             {/* {this.props.quotes.map((question, id) => (
-               <div className="questionBox">
-             <p className="question" key={id}> {question.question}</p>
-                
-             {this.props.quotes.map((answers, id) => (
-             <p className="answerBtn" key={id}> {answers.answers.split(",")}</p>
-                ))}    
-          </div>
-          ))}  */}
-           
-
-        {/* {this.state.score.length > 0 && 
-         this.state.responses < 5 &&
-         this.props.quotes.map(
-           (display, correct) => (
-        <Question
-    
-        question={display.question}
-         options={display.answers.split(",")} key={display.id} 
-        selected={answer => this.computeAnswer(answer,correct)}/>) 
+        {this.state.questionBank.length > 0 && 
+         this.state.responses < 5 && 
+          this.props.quotes.map(
+            ({question, answers, correct, id}) => (
+    <Question question={question} options={answers} key={id} 
+        selected={answer => this.computeAnswer(answer,correct)}
+        />) 
         )}
-        {this.state.responses === 5 ? (<Result score={this.state.score} playAgain={this.playAgain}/>) : null} */}
-       
-         
-        </div>
-   
-        );    
-         };
-  
-        }
-
+        
+    {this.state.responses === 5 ? <Redirect to="/Result"/>: null}
+         </div>
+     )
+}
+}
 
 const mapStateToProps = state => {
    return {
        questionBank: state.fetchSuccess
    }
-    // const {questionBank} = state
-    // return{
-    //     questionBank: questionBank
-    // }
 }
 
 
@@ -123,4 +85,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
-// export default Quiz;
+
+     

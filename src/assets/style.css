@@ -107,7 +107,9 @@
   border-radius: 15px;
   cursor: pointer;
 }
-
+.answerBtn:hover {
+  background-color: burlywood;
+}
 .score-board {
   position: relative;
   height: 700px;
@@ -120,7 +122,7 @@
   width: 1024px;
   font-size: 3.5em;
   text-align: center;
-  margin-left: 200px;
+  margin-left: 10px;
 }
 .tryagain {
   line-height: 23;
@@ -129,7 +131,7 @@
   font-size: 1.5em;
   top: 250px;
   text-align: center;
-  margin-left: 200px;
+  margin-left: 15px;
 }
 
 .playBtn {
@@ -137,20 +139,24 @@
   background-color: rgba(177, 134, 42, 0.856);
   top: 300px;
   border: black;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: rgb(255, 255, 255);
   width: 150px;
   left: 0px;
   right: 0px;
   margin: auto;
-  margin-top: 170px;
-  padding: 15px;
+  margin-top: 275px;
+  padding: 20px;
   font-weight: bold;
   border-radius: 15px;
   cursor: pointer;
 }
+.playBtn:hover {
+  cursor: pointer;
+  background-color: burlywood;
+}
 .gif {
   position: center;
-  margin-left: 400px;
-  margin-right: 50px;
+  margin-left: 215px;
+  margin-right: 60px;
 }

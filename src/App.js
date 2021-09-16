@@ -32,8 +32,8 @@ return (
          <Route exact path="/quiz"> 
            <Quiz quotes={data}/> 
         </Route>
-        <Route exact path="/result">
-          <Result />
+        <Route  exact path="/Result">
+        <Result/>
         </Route>
       </Switch>
       </Router>

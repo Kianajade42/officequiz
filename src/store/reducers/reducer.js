@@ -15,16 +15,6 @@ const quizReducer = (state = {}, action) => {
            
         return {...state, data:action.payload}
 
-        //    return Object.assign({}, state, {
-        //   questionBank: console.log(action.payload)
-        // });  
-        //  console.log(action.payload)
-        //  return action.payload
-
-              //questionBank: action.questionBank
-        
-         // action.payload
-            //return {...state, questionBank: action.payload}
         default:
         return state
             
