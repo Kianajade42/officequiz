@@ -32,9 +32,11 @@ return (
          <Route exact path="/quiz"> 
            <Quiz quotes={data}/> 
         </Route>
-        <Route  exact path="/Result">
-        <Result/>
-        </Route>
+        <Route 
+        path='/Result'
+        render={(props) => (
+        <Result {...props}/>)}
+          />
       </Switch>
       </Router>
     </div> 

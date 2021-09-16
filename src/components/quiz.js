@@ -65,7 +65,12 @@ class Quiz extends React.Component {
         />) 
         )}
         
-    {this.state.responses === 5 ? <Redirect to="/Result"/>: null}
+    {this.state.responses === 5 ? 
+
+    <Redirect to={{
+       pathname: '/Result',
+       state: this.state.score
+      }} />: null}
          </div>
      )
 }
