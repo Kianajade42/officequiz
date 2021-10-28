@@ -1,27 +1,47 @@
 import React from "react";
 import Question from "./QuestionBox";
-import Result from "./Result";
+//import Result from "./Result";
 import {connect} from "react-redux";
 import {fetchQuestions} from "../store/actions/action";
 import { Redirect } from "react-router-dom";
-//import useData from "../store/selectors/selector";
 
 class Quiz extends React.Component {
     constructor(props){
       super(props)
         this.state = {
-          questionBank: [this.props.quotes],
+          questionBank: [this.props.quotes[0]],
           score: 0,
           responses: 0,
      }
+     
     }
   
      componentDidUpdate(prevProps){
+         
        if (this.props.quotes !== prevProps.quotes)
        { 
            this.setState({ questionBank: this.props.quotes })
        }
      }
+//    processquote = (quotes) => {
+       
+//      let {data}= JSON.parse(quotes)
+//      data = this.shuffle(data)
+//      return data.slice(0, 5)
+//    }
+
+//    shuffle(array) {
+//   let currentIndex = array.length,  randomIndex;
+//   while (currentIndex != 0) {
+
+//     randomIndex = Math.floor(Math.random() * currentIndex);
+//     currentIndex--;
+//     [array[currentIndex], array[randomIndex]] = [
+//       array[randomIndex], array[currentIndex]];
+//   }
+
+//   return array;
+// }
 
 
     getQuestions = () => {
@@ -51,6 +71,7 @@ class Quiz extends React.Component {
     };
 
 
+
    render(){
      return ( 
         <div className="container">
@@ -58,7 +79,7 @@ class Quiz extends React.Component {
         <div className="intro"> WHO SAID IT?</div>
         {this.state.questionBank.length > 0 && 
          this.state.responses < 5 && 
-          this.props.quotes.map(
+        this.props.quotes[0].map(
             ({question, answers, correct, id}) => (
     <Question question={question} options={answers} key={id} 
         selected={answer => this.computeAnswer(answer,correct)}
@@ -73,6 +94,7 @@ class Quiz extends React.Component {
       }} />: null}
          </div>
      )
+
 }
 }
 
@@ -85,7 +107,8 @@ const mapStateToProps = state => {
 
  const mapDispatchToProps = dispatch => {
     return {
-        fetchQuestions: () => dispatch(fetchQuestions())
+       fetchQuestions: () => dispatch(fetchQuestions())
+       
     }
 }
 

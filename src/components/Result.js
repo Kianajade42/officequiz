@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { withRouter} from 'react-router';
 
 const Result = (props) => {
-console.log(props)
+
     return(
          <div className="container">
               <div className="intro">IT IS THE OFFICE QUIZ.</div>
@@ -20,6 +20,10 @@ console.log(props)
         <button className="playBtn"
          onClick={props.playAgain}>
              <Link to="/quiz">Play again?</Link>
+        </button>
+         <button className="scoreBtn"
+         onClick={props.highscore}>
+             <Link to="/highscore">Highscores</Link>
         </button>
     </div>
     </div>

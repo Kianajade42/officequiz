@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import "./assets/style.css";
 import Quiz from "./components/quiz";
 import Home from "./components/home";
+import Highscore from "./components/highscore";
 import Result from "./components/Result";
 import { useEffect} from "react";
 import {fetchQuestions} from './store/actions/action';
@@ -17,9 +18,12 @@ const dispatch = useDispatch();
 const data = useSelector(getData)
 
 useEffect (() => {
-    dispatch(fetchQuestions())},
- [  dispatch]);
-
+  console.log("a")
+    dispatch(fetchQuestions());
+  console.log("b")
+},
+ [dispatch]);
+console.log(data)
 
 return (
     
@@ -37,6 +41,9 @@ return (
         render={(props) => (
         <Result {...props}/>)}
           />
+         <Route exact path="/highscore">
+          <Highscore highscore={data}/>
+        </Route>
       </Switch>
       </Router>
     </div> 
