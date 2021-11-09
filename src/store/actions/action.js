@@ -61,24 +61,24 @@ export function fetchQuestionsSuccess() {
 // })
 //     }
 //   }
+
+
 export function fetchQuestions(){
   console.log("c")
   return function(dispatch){
   Promise.all([
-	fetch("http://127.0.0.1:3000/questions"),
+	fetch("https://www.officeapi.dev/api/quotes"),
 	fetch("http://127.0.0.1:3000/scores",
-  { method:"POST",
+  { method:"GET",
 headers:{ "Content-Type":"application/json",
           "Accept":"application/json"
-},body:JSON.stringify( {
-    highscore: " ",
-    name: " "
-})
+}
 })
 ]).then(function (responses) {
-	//  JSON object from each of the responses
+
 	return Promise.all(responses.map(function (response) {
 		return response.json();
+    
 	}));
 }).then(data => {
    dispatch({ type: fetchSuccess, payload: data })

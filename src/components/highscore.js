@@ -1,15 +1,20 @@
 
 import { withRouter} from 'react-router';
 import {Link} from 'react-router-dom';
-import React, {useState} from "react";
+import React from "react";
 
 
-const Highscore = (props) => {
-     const winner = (props.highscore);
-               
-console.log(winner)
-    
-        
+
+
+    export default class Highscore extends React.Component {
+    constructor(props){
+    super(props)
+      this.state = {
+          score: [this.props.highscore]
+        }
+    }
+   
+        render() {
     return(
          <div className="container">
               <div className="intro">IT IS THE OFFICE QUIZ.</div>
@@ -17,20 +22,12 @@ console.log(winner)
               <div className="score-board">    
               <div className="highscore"> 
              <div className="intro"><h2>Highscores</h2></div>
-                    <div className="questionBox">
-                    <div className="question"> 
-                    <form action="http://localhost:3000/scores" method="POST">
-  <label> Name: <input type="text" name="name" id="name" /></label>
-  <br />
-  <input type="submit" id="submit" value="Submit" />
-</form>
-                     
-                    </div>
-                    </div>
-                     
-                    
-         <button className="playBtn"
-         onClick={props.playAgain}>
+            <div className="question"></div> 
+        {this.props.highscore[1].slice(0, 5).map(
+             ({highscore, name}) => (
+          <h1 className="HSdisplay"> {name}:   {highscore}</h1> 
+          ))}            
+         <button className="playBtn">
              <Link to="/quiz">Play again?</Link>
         </button>
         
@@ -43,7 +40,24 @@ console.log(winner)
         </div>
      
     )
-                 }
+     }
+    }
 
 
-export default withRouter(Highscore);
+// export default withRouter(Highscore);
+// scoresort = (a,b) => {
+//     if (a > b) {
+//     return -1;;
+//   } else if (b > a) {
+//     return 1;;
+//   } else {
+//     return 0;
+//   }
+// }
+
+//  {this.state.players.map(function(player, index) {
+//                 {this.onScoreChange() && this.onScoreChange(index ,).slice(0, 5).map(
+//              ({highscore, name}) => (
+//           <h1 className="HSdisplay"> {name}:   {player.score}</h1> ))}     
+//             })     
+//           }

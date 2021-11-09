@@ -1,9 +1,12 @@
 import React from "react";
 import Question from "./QuestionBox";
+// import Highscore from "./highscore";
+// import PopUp from "./PopUp";
 //import Result from "./Result";
 import {connect} from "react-redux";
 import {fetchQuestions} from "../store/actions/action";
 import { Redirect } from "react-router-dom";
+
 
 class Quiz extends React.Component {
     constructor(props){
@@ -12,10 +15,16 @@ class Quiz extends React.Component {
           questionBank: [this.props.quotes[0]],
           score: 0,
           responses: 0,
+          
      }
      
     }
-  
+//   componentDidMount() {
+//   const score = localStorage.getItem('score');
+//   const name = score ? localStorage.getItem('name') : '';
+//   this.setState({ name, score });
+// }
+
      componentDidUpdate(prevProps){
          
        if (this.props.quotes !== prevProps.quotes)
@@ -23,6 +32,7 @@ class Quiz extends React.Component {
            this.setState({ questionBank: this.props.quotes })
        }
      }
+
 //    processquote = (quotes) => {
        
 //      let {data}= JSON.parse(quotes)
@@ -46,7 +56,7 @@ class Quiz extends React.Component {
 
     getQuestions = () => {
         this.setState({
-        questionBank: Question
+        questionBank: Question 
         });
           };
        
@@ -60,6 +70,7 @@ class Quiz extends React.Component {
         this.setState({
         responses: this.state.responses < 5 ? this.state.responses + 1 : 5
         });
+        
     };
 
     playAgain = () => {
@@ -69,8 +80,6 @@ class Quiz extends React.Component {
             responses: 0
         });
     };
-
-
 
    render(){
      return ( 
@@ -85,15 +94,18 @@ class Quiz extends React.Component {
         selected={answer => this.computeAnswer(answer,correct)}
         />) 
         )}
-        
     {this.state.responses === 5 ? 
-
     <Redirect to={{
        pathname: '/Result',
        state: this.state.score
-      }} />: null}
+      }} 
+      />: null }
+ 
+    
          </div>
+         
      )
+
 
 }
 }
