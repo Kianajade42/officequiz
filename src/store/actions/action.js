@@ -67,7 +67,7 @@ export function fetchQuestions(){
   console.log("c")
   return function(dispatch){
   Promise.all([
-	fetch("https://www.officeapi.dev/api/quotes"),
+	fetch("http://127.0.0.1:3000/questions"),
 	fetch("http://127.0.0.1:3000/scores",
   { method:"GET",
 headers:{ "Content-Type":"application/json",

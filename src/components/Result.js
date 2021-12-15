@@ -1,15 +1,20 @@
 
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import { withRouter} from 'react-router';
 import PopUp from "./PopUp";
-
+ import {useState, useEffect} from "react";
+import React, { Component }  from 'react';
+import Home from './home';
 const Result = (props) => {
-<PopUp highscore={`${props.location.state}`}/>
+
+const [showPopup, setShowPopup] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setShowPopup(true), 2000);
+}, []);
 
     return( 
          <div className="container">
-             <div className="popup">
-        </div>
+             { showPopup ? <PopUp highscore={`${props.location.state}`} /> : null }
           
               <div className="intro">IT IS THE OFFICE QUIZ.</div>
              <div className="home">
@@ -31,13 +36,17 @@ const Result = (props) => {
          onClick={props.playAgain}>
              <Link to="/quiz">Play again?</Link>
         </button>
-         <button className="scoreBtn"
+        <button className="scoreBtn">
+        <Link to="/">Home</Link>
+         </button>
+         {/* <button className="scoreBtn"
          onClick={props.highscore}>
              <Link to="/highscore">Highscores</Link>
-        </button>
+        </button> */}
     </div>
     </div>
     )
     }
 
 export default withRouter(Result);
+

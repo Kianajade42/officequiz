@@ -4,6 +4,7 @@
 }
 .scoretext {
   visibility: hidden;
+  font-size: 0.5;
 }
 .HSdisplay {
   font-size: 35px;
@@ -14,6 +15,9 @@
   height: 65px;
   box-sizing: border-box;
   background-color: rgba(206, 204, 202, 0.74);
+}
+nav.open {
+  visibility: hidden;
 }
 .popup {
   background-color: rgba(206, 204, 202, 0.74);
@@ -46,10 +50,11 @@
   text-align: center;
   position: absolute;
   background-color: rgba(177, 134, 42, 0.856);
-  margin-left: 50px;
-  margin-top: 20px;
-  margin-right: 50px;
-  font-size: 2em;
+  margin-left: 140px;
+  margin-top: 17px;
+  margin-right: 150px;
+  font-size: 1.5em;
+  line-height: 45px;
   color: rgb(255, 255, 255);
   font-weight: bold;
   border-radius: 10px;
@@ -57,10 +62,10 @@
 }
 .formsubmit {
   text-align: center;
-  margin-top: 100px;
-  margin-left: 215px;
+  margin-left: 205px;
+  margin-top: 125px;
   line-height: 5spx;
-  position: center;
+  position: absolute;
   background-color: rgba(0, 0, 0, 1);
   color: rgb(255, 255, 255);
   padding: 10px;
@@ -213,6 +218,23 @@
   top: 250px;
   text-align: center;
   margin-left: 15px;
+}
+.homescoreBtn {
+  position: absolute;
+  background-color: rgba(177, 134, 42, 0.856);
+  top: 250px;
+  border: black;
+  font-size: 1.2em;
+  color: rgb(255, 255, 255);
+  width: 150px;
+  left: 1px;
+  right: 0px;
+  margin: auto;
+  margin-top: 275px;
+  padding: 20px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
 }
 .scoreBtn {
   position: absolute;

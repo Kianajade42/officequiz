@@ -1,24 +1,58 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class PopUp extends Component {
- 
-  render() {
-    return (
-      <div className="popup">
-          <div className="popupform"> identity theft is not a joke.</div> 
-        <div>
-          
-          <form  action="http://localhost:3000/scores" method="POST">
-             <label className="formBtn" >
-              Name: <input type="text" name="name" id="name" />
-              <textarea className="scoretext" name="highscore" id="highscore" value={this.props.highscore} />
-              </label>  <br />
-             <input className="formsubmit" onclick="self.close()" type="submit" id="submit" value="Submit" />
-             
-          </form>
 
-          </div>
-      </div>
-    );
-  }
+const PopUp = (props) => {
+
+  const [open, setOpen] = useState(false);
+
+  const initialFormData = {name: " ", highscore: props.highscore}
+  const [formData, updateFormData] = useState(initialFormData);
+
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+      [e.target.name]: e.target.value.trim()
+    });
+  };
+
+
+
+    const handleSubmit = () => {
+    console.log(formData);
+    fetch( "http://localhost:3000/scores", 
+                    {
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
+                    method: "post",
+                     })
+                     .then (console.log);
+                     
 }
+
+    return  (
+        <nav className={open ? "open" : null}>
+          <div className="popup">
+          <div className="popupform"> identity theft is not a joke.</div> 
+          <form className="formBtn" >
+              <label> Name:
+          <input type="text" name="name" id="name" onChange={handleChange} />
+             </label>
+            </form>
+                      <button className="formsubmit" value="submit"
+        onClick={() => {
+        setOpen(!open);
+        handleSubmit();
+        }}
+      >
+          Submit
+        </button>
+        
+    
+    </div>
+   </nav>
+    );
+}
+  
+  export default (PopUp);
+
+

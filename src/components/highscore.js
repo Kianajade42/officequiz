@@ -10,7 +10,7 @@ import React from "react";
     constructor(props){
     super(props)
       this.state = {
-          score: [this.props.highscore]
+          score: [this.props.highscore[1]]
         }
     }
    
@@ -19,6 +19,7 @@ import React from "react";
          <div className="container">
               <div className="intro">IT IS THE OFFICE QUIZ.</div>
               <div className="home"> <h3> Am I a hero?… I really can’t say, but yes! -Michael Scott </h3></div> 
+              
               <div className="score-board">    
               <div className="highscore"> 
              <div className="intro"><h2>Highscores</h2></div>
@@ -26,9 +27,10 @@ import React from "react";
         {this.props.highscore[1].slice(0, 5).map(
              ({highscore, name}) => (
           <h1 className="HSdisplay"> {name}:   {highscore}</h1> 
-          ))}            
+          ))}  
+              
          <button className="playBtn">
-             <Link to="/quiz">Play again?</Link>
+             <Link to="/quiz">Play</Link>
         </button>
         
         <button className="scoreBtn">

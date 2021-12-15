@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 
-const Home = () => {
+const Home = (props) => {
 
     return (
         <div className="container">
@@ -20,6 +20,10 @@ const Home = () => {
                 <button className="start">
                     <Link to="/quiz">Lets Play!</Link>
                     </button>
+                    <button className="homescoreBtn"
+                    onClick={props.highscore}>
+                  <Link to="/highscore">Highscores</Link>
+        </button>
         </div>
         </div>
     )

@@ -12,11 +12,11 @@ import {getData} from "./store/selectors/selector";
 
 function App() {
 
-
+    
 const dispatch = useDispatch();
 
 const data = useSelector(getData)
-
+ 
 useEffect (() => {
   console.log("a")
     dispatch(fetchQuestions());
@@ -24,7 +24,7 @@ useEffect (() => {
 },
  [dispatch]);
 console.log(data)
-
+  
 return (
     
   <div className="App">
@@ -50,5 +50,6 @@ return (
   );
    
 }
+
 
 export default App;
