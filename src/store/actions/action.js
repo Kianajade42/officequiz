@@ -21,34 +21,6 @@ export function fetchQuestionsSuccess() {
   }
 }
 
-// export function fetchQuestions(data) {
-//  console.log("c")
-//     return () => {
-//         fetch("http://www.officeapi.dev/api/quotes")
-//         .then(response=> response.json())
-//         .then(data => console.log(data) ) 
-//         } 
-//         console.log(data)
-        
-//     }
- 
-// export function fetchQuestions() {
-//    console.log("c")
-//     return () => {
-//          fetch("http://www.officeapi.dev/api/quotes", {
-//             method: "GET",
-//             headers: {}
-//           })
-//         .then(r=> r.json())
-//         .then(data => console.log(data)
-            
-            
-            
-//         )
-    
-//     }
-    
-// }
 
 // export function fetchQuestions(){
 //   console.log("c")

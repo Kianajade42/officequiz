@@ -32,31 +32,17 @@ class Quiz extends React.Component {
            this.setState({ questionBank: this.props.quotes })
        }
      }
-
-//    processquote = (quotes) => {
-       
-//      let {data}= JSON.parse(quotes)
-//      data = this.shuffle(data)
-//      return data.slice(0, 5)
-//    }
-
-//    shuffle(array) {
-//   let currentIndex = array.length,  randomIndex;
-//   while (currentIndex != 0) {
-
-//     randomIndex = Math.floor(Math.random() * currentIndex);
-//     currentIndex--;
-//     [array[currentIndex], array[randomIndex]] = [
-//       array[randomIndex], array[currentIndex]];
+// componentDidUpdate(prevProps, prevState) {
+//   if (prevState.data !== this.state.data) {
+//      this.setState({ highscore: this.props.data[1] })
 //   }
-
-//   return array;
 // }
+
 
 
     getQuestions = () => {
         this.setState({
-        questionBank: Question 
+        questionBank: Question
         });
           };
        
